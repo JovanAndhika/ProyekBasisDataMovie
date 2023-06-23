@@ -3,13 +3,12 @@ package com.example.proyekbasisdata;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Window;
 
 import java.sql.*;
+import java.time.LocalDate;
 
 public class PurchaseTicketControl {
     //TABEL MOVIE
@@ -36,16 +35,19 @@ public class PurchaseTicketControl {
 
 
 
-    //TABEL TIKET
+    //TABEL BELI TIKET
     @FXML
     protected TableView<PurchaseTicketProperty> table_purchase_ticket;
     @FXML
-    protected TableColumn<PurchaseTicketProperty, Integer> kolom_kodeticket;
-    @FXML
     protected TableColumn<PurchaseTicketProperty, String> kolom_purchasejudul;
     @FXML
-    protected TableColumn<PurchaseTicketProperty, String> kolom_kodeJadwal;
+    protected TableColumn<PurchaseTicketProperty, Integer> kolom_harga;
+    @FXML
+    protected TableColumn<PurchaseTicketProperty, String> kolom_nomorkursi;
+    @FXML
+    protected  TableColumn<PurchaseTicketProperty, String> kolom_purchasetanggal;
 
+    ObservableList<PurchaseTicketProperty> listPurchaseTicket = FXCollections.observableArrayList();
 
 
 
@@ -92,8 +94,20 @@ public class PurchaseTicketControl {
     }
 
     @FXML
-    protected void addTicket(){
+    protected void addTicketkeTabel() {
+        String juduldiTicket = judulMovie.getText();
+        String nomorKursi = nomerKursi.getText();
+        int harga = Integer.parseInt(hargaTicket.getText());
+        LocalDate tgldiTicket = tanggal.getValue();
+        String hasilTgl = String.valueOf(tgldiTicket);
 
+        listPurchaseTicket.add(new PurchaseTicketProperty(juduldiTicket,nomorKursi,harga,hasilTgl));
+        table_purchase_ticket.setItems(listPurchaseTicket);
+        kolom_purchasejudul.setCellValueFactory(new PropertyValueFactory<PurchaseTicketProperty, String>("purchasejudul"));
+        kolom_nomorkursi.setCellValueFactory(new PropertyValueFactory<PurchaseTicketProperty, String>("purchasenomorkursi"));
+        kolom_harga.setCellValueFactory(new PropertyValueFactory<PurchaseTicketProperty, Integer>("purchaseharga"));
+        kolom_purchasetanggal.setCellValueFactory(new PropertyValueFactory<PurchaseTicketProperty, String>("purchasetanggal"));
     }
+
 
 }

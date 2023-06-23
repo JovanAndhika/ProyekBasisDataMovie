@@ -15,9 +15,9 @@
       <Text layoutX="38.0" layoutY="70.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Pilih movie :" />
       <Text layoutX="38.0" layoutY="117.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Harga :" wrappingWidth="51.96875" />
       <Text layoutX="38.0" layoutY="165.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tanggal tayang :" />
-      <TextField layoutX="119.0" layoutY="100.0" prefHeight="26.0" prefWidth="234.0" />
-      <DatePicker layoutX="149.0" layoutY="148.0" prefHeight="26.0" prefWidth="205.0" />
-      <TextField layoutX="126.0" layoutY="197.0" />
+      <TextField fx:id="hargaTicket" layoutX="119.0" layoutY="100.0" prefHeight="26.0" prefWidth="234.0" />
+      <DatePicker fx:id="tanggal" layoutX="149.0" layoutY="148.0" prefHeight="26.0" prefWidth="205.0" />
+      <TextField fx:id="nomerKursi" layoutX="126.0" layoutY="197.0" />
       <Text layoutX="38.0" layoutY="214.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nomor kursi : " />
       <TableView fx:id="table_nama_movie" layoutX="400.0" layoutY="39.0" onMouseClicked="#getSelected" prefHeight="200.0" prefWidth="345.0">
         <columns>
@@ -27,14 +27,15 @@
         </columns>
       </TableView>
       <Button layoutX="43.0" layoutY="300.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="64.0" text="Back" />
-      <TableView layoutX="25.0" layoutY="354.0" prefHeight="200.0" prefWidth="437.0">
+      <TableView fx:id="table_purchase_ticket" layoutX="25.0" layoutY="354.0" prefHeight="200.0" prefWidth="437.0">
         <columns>
-          <TableColumn prefWidth="116.800048828125" text="kode_ticket" />
-            <TableColumn prefWidth="213.60000610351562" text="judul" />
-            <TableColumn prefWidth="106.4000244140625" text="Kode jadwal" />
+            <TableColumn fx:id="kolom_purchasejudul" prefWidth="147.20001220703125" text="judul" />
+            <TableColumn fx:id="kolom_nomorkursi" prefWidth="84.0" text="Nomor kursi" />
+            <TableColumn fx:id="kolom_harga" prefWidth="97.5999755859375" text="Harga" />
+            <TableColumn fx:id="kolom_purchasetanggal" prefWidth="108.00002441406252" text="Tanggal" />
         </columns>
       </TableView>
-      <Button layoutX="175.0" layoutY="301.0" mnemonicParsing="false" text="Add Ticket" />
+      <Button layoutX="175.0" layoutY="301.0" mnemonicParsing="false" onAction="#addTicketkeTabel" text="Add Ticket" />
       <Button layoutX="488.0" layoutY="428.0" mnemonicParsing="false" text="Delete Ticket" />
       <Button layoutX="553.0" layoutY="527.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="107.0" text="Make Order" />
    </children>
