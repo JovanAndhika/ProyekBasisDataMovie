@@ -3,8 +3,10 @@ package com.example.proyekbasisdata;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Stage;
 import javafx.stage.Window;
 
 import java.sql.Connection;
@@ -14,6 +16,8 @@ import java.sql.SQLException;
 import java.sql.*;
 
 public class NamaMovieControl {
+    @FXML
+    Button tombolBack;
     @FXML
     TextField fieldIdMovie;
     @FXML
@@ -34,31 +38,31 @@ public class NamaMovieControl {
     TextField fieldDimensi;
 
     @FXML
-    TableView<NamaMovie> tbl_nama_movie;
+    TableView<NamaMovieProperty> tbl_nama_movie;
     @FXML
-    TableColumn<NamaMovie, String> colIdMovie;
+    TableColumn<NamaMovieProperty, String> colIdMovie;
     @FXML
-    TableColumn<NamaMovie, String> colIdLisensor;
+    TableColumn<NamaMovieProperty, String> colIdLisensor;
     @FXML
-    TableColumn<NamaMovie, String> colKodeJadwal;
+    TableColumn<NamaMovieProperty, String> colKodeJadwal;
     @FXML
-    TableColumn<NamaMovie, String> colJudul;
+    TableColumn<NamaMovieProperty, String> colJudul;
     @FXML
-    TableColumn<NamaMovie, Integer> colDurasi;
+    TableColumn<NamaMovieProperty, Integer> colDurasi;
     @FXML
-    TableColumn<NamaMovie, String> colGenre;
+    TableColumn<NamaMovieProperty, String> colGenre;
     @FXML
-    TableColumn<NamaMovie, Integer> colTahunProduksi;
+    TableColumn<NamaMovieProperty, Integer> colTahunProduksi;
     @FXML
-    TableColumn<NamaMovie, String> colSutradara;
+    TableColumn<NamaMovieProperty, String> colSutradara;
     @FXML
-    TableColumn<NamaMovie, String> colDimensi;
+    TableColumn<NamaMovieProperty, String> colDimensi;
     @FXML
     Button clearBtn;
     @FXML
     Button saveBtn;
     @FXML
-    ObservableList<NamaMovie> listNamaMovie = FXCollections.observableArrayList();
+    ObservableList<NamaMovieProperty> listNamaMovieProperty = FXCollections.observableArrayList();
 
 
     @FXML
@@ -97,7 +101,7 @@ public class NamaMovieControl {
                     String Sut = rs.getString(8);
                     String dimensi = rs.getString(9);
 
-                    listNamaMovie.add(new NamaMovie(id_movie,id_lisensor,kode_jadwal,judul,
+                    listNamaMovieProperty.add(new NamaMovieProperty(id_movie,id_lisensor,kode_jadwal,judul,
                             durasi,genre,tahun,Sut,dimensi));
                 }
             }
@@ -111,7 +115,7 @@ public class NamaMovieControl {
             System.out.println(e);
         }
 
-        tbl_nama_movie.setItems(listNamaMovie);
+        tbl_nama_movie.setItems(listNamaMovieProperty);
         tbl_nama_movie.getColumns().get(0).setCellValueFactory(new PropertyValueFactory("id_movie"));
         tbl_nama_movie.getColumns().get(1).setCellValueFactory(new PropertyValueFactory("id_lisensor"));
         tbl_nama_movie.getColumns().get(2).setCellValueFactory(new PropertyValueFactory("kode_jadwal"));
@@ -230,5 +234,12 @@ public class NamaMovieControl {
         alert.setContentText(_message);
         alert.initOwner(_owner);
         alert.show();
+    }
+
+    public void backButton(){
+        HelloApplication app = HelloApplication.getApplicationInstance();
+        Stage primaryStage = app.getPrimaryStage();
+        Scene scene_awal = app.getSceneAwal();
+        primaryStage.setScene(scene_awal);
     }
 }

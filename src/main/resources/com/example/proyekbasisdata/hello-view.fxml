@@ -16,7 +16,7 @@
           </Menu>
           <Menu mnemonicParsing="false" text="Purchase">
             <items>
-              <MenuItem mnemonicParsing="false" text="purchase tiket" />
+              <MenuItem mnemonicParsing="false" onAction="#scenePurchaseTicket" text="purchase tiket" />
             </items>
           </Menu>
           <Menu mnemonicParsing="false" text="Location">
@@ -27,8 +27,8 @@
           </Menu>
             <Menu mnemonicParsing="false" text="Find">
               <items>
-                <MenuItem mnemonicParsing="false" text="Cari film" />
                   <MenuItem mnemonicParsing="false" text="Cari transaksi" />
+                  <MenuItem mnemonicParsing="false" text="Jadwal" />
               </items>
             </Menu>
         </menus>

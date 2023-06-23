@@ -26,19 +26,25 @@ public class HelloApplication extends Application {
     }
 
 
+    //Scene Awal
     private Stage primaryStage;
     private Scene sceneAwal;
     private SceneAwal sceneAwalControl;
 
 
-    //Scene untuk daftar member
+    //Scene untuk daftar movie
     private Scene sceneLokasiBios;
-    private LokasiBioskop sceneLokasiBiosControl;
+    private LokasiBioskopControl sceneLokasiBiosControl;
 
 
-    //Scene untuk daftar staf
+    //Scene untuk lokasi bioskop
     private Scene sceneNamaMovie;
     private NamaMovieControl sceneNamaMovieControl;
+
+
+    //Scene untuk purchase ticket
+    private Scene scenePurchaseTicket;
+    private PurchaseTicketControl scenePurchaseControl;
 
 
     public HelloApplication(){
@@ -56,16 +62,20 @@ public class HelloApplication extends Application {
         this.primaryStage = stage;
 
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("hello-view.fxml"));
-        sceneAwal =  new Scene(fxmlLoader.load(), 320, 240);
+        sceneAwal =  new Scene(fxmlLoader.load(), 800, 600);
         sceneAwalControl = fxmlLoader.getController();
 
         fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("LokasiBioskop.fxml"));
-        sceneLokasiBios = new Scene(fxmlLoader.load(), 320, 240);
+        sceneLokasiBios = new Scene(fxmlLoader.load(), 800, 600);
         sceneLokasiBiosControl =  fxmlLoader.getController();
 
         fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("NamaMovie.fxml"));
-        sceneNamaMovie = new Scene(fxmlLoader.load(), 320, 240);
+        sceneNamaMovie = new Scene(fxmlLoader.load(), 800, 600);
         sceneNamaMovieControl =  fxmlLoader.getController();
+
+        fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("PurchaseTicket.fxml"));
+        scenePurchaseTicket = new Scene(fxmlLoader.load(), 800, 600);
+        scenePurchaseControl=  fxmlLoader.getController();
 
         stage.setTitle("Hello!");
         stage.setScene(sceneAwal);
@@ -92,7 +102,7 @@ public class HelloApplication extends Application {
         return sceneLokasiBios;
     }
 
-    public LokasiBioskop getSceneLokasiBiosControl() {
+    public LokasiBioskopControl getSceneLokasiBiosControl() {
         return sceneLokasiBiosControl;
     }
 
@@ -102,5 +112,13 @@ public class HelloApplication extends Application {
 
     public NamaMovieControl getSceneNamaMovieControl() {
         return sceneNamaMovieControl;
+    }
+
+    public Scene getScenePurchaseTicket() {
+        return scenePurchaseTicket;
+    }
+
+    public PurchaseTicketControl getScenePurchaseControl() {
+        return scenePurchaseControl;
     }
 }

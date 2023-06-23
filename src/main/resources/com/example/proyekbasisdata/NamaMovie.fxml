@@ -11,7 +11,7 @@
 <AnchorPane prefHeight="412.0" prefWidth="1096.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.proyekbasisdata.NamaMovieControl">
 
     <children>
-        <Label layoutX="121.0" layoutY="14.0" prefHeight="17.0" prefWidth="160.0" text="TABEL NAMA MOVIE" textAlignment="CENTER" textFill="#0c6680">
+        <Label layoutX="121.0" layoutY="14.0" prefHeight="600" prefWidth="1000" text="TABEL NAMA MOVIE" textAlignment="CENTER" textFill="#0c6680">
             <font>
                 <Font name="System Bold" size="15.0" />
             </font>
@@ -51,5 +51,6 @@
       <TextField fx:id="fieldTahunProduksi" layoutX="126.0" layoutY="264.0" />
       <Button layoutX="159.0" layoutY="369.0" mnemonicParsing="false" onAction="#updateData" text="UPDATE" />
       <Button layoutX="281.0" layoutY="369.0" mnemonicParsing="false" onAction="#deleteData" text="DELETE" />
+      <Button fx:id="tombolBack" layoutX="27.0" layoutY="14.0" mnemonicParsing="false" onAction="#backButton" text="BACK" />
     </children>
 </AnchorPane>

@@ -31,4 +31,12 @@ public class SceneAwal {
         Scene inputMovie = app.getSceneNamaMovie();
         primaryStage.setScene(inputMovie);
     }
+
+    @FXML
+    protected void scenePurchaseTicket(){
+        HelloApplication app = HelloApplication.getApplicationInstance();
+        Stage primaryStage = app.getPrimaryStage();
+        Scene purchase_ticket = app.getScenePurchaseTicket();
+        primaryStage.setScene(purchase_ticket);
+    }
 }

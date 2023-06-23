@@ -1,6 +1,6 @@
 package com.example.proyekbasisdata;
 
-public class NamaMovie {
+public class NamaMovieProperty {
     private String id_movie;
     private String id_lisensor;
     private String kode_jadwal;
@@ -11,7 +11,8 @@ public class NamaMovie {
     private String Sut;
     private String dimensi;
 
-    public NamaMovie(String id_movie, String id_lisensor, String kode_jadwal, String judul, Integer durasi, String genre, Integer tahun_produksi, String Sut, String dimensi) {
+
+    public NamaMovieProperty(String id_movie, String id_lisensor, String kode_jadwal, String judul, Integer durasi, String genre, Integer tahun_produksi, String Sut, String dimensi) {
         this.id_movie = id_movie;
         this.id_lisensor = id_lisensor;
         this.kode_jadwal = kode_jadwal;
@@ -21,6 +22,12 @@ public class NamaMovie {
         this.tahun_produksi = tahun_produksi;
         this.Sut = Sut;
         this.dimensi = dimensi;
+    }
+
+    public NamaMovieProperty(String id_movie, String judul, String kode_jadwal) {
+        this.id_movie = id_movie;
+        this.kode_jadwal = kode_jadwal;
+        this.judul = judul;
     }
 
     public String getId_movie() {
