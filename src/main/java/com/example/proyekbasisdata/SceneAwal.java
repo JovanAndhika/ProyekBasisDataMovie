@@ -69,4 +69,12 @@ public class SceneAwal {
         Scene jadwal = app.getSceneJadwal();
         primaryStage.setScene(jadwal);
     }
+
+    @FXML
+    protected void sceneTransaksi(){
+        HelloApplication app = HelloApplication.getApplicationInstance();
+        Stage primaryStage = app.getPrimaryStage();
+        Scene transaksi = app.getSceneTransaksi();
+        primaryStage.setScene(transaksi);
+    }
 }

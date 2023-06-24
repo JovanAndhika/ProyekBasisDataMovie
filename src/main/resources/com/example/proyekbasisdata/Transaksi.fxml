@@ -1,19 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.proyekbasisdata.TransaksiControl">
+<AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.proyekbasisdata.TransaksiControl">
    <children>
-      <TableView fx:id="tblTransaksi" layoutX="120.0" layoutY="57.0" prefHeight="305.0" prefWidth="362.0">
+      <TableView fx:id="tblTransaksi" layoutX="29.0" layoutY="75.0" prefHeight="490.0" prefWidth="741.0">
         <columns>
-          <TableColumn fx:id="tblIdTransaksi" prefWidth="75.0" text="id_transaksi" />
-          <TableColumn fx:id="tblIdAkun" prefWidth="75.0" text="id_akun" />
-            <TableColumn fx:id="tblNamaKasir" prefWidth="75.0" text="nama_kasir" />
-            <TableColumn fx:id="tblTglTransaksi" prefWidth="135.99997558593748" text="tgl_transaksi" />
+          <TableColumn fx:id="tblIdTransaksi" prefWidth="120.79998779296875" text="id_transaksi" />
+          <TableColumn fx:id="tblIdAkun" prefWidth="160.0" text="id_akun" />
+            <TableColumn fx:id="tblNamaKasir" prefWidth="284.0" text="nama_kasir" />
+            <TableColumn fx:id="tblTglTransaksi" prefWidth="178.4000244140625" text="tgl_transaksi" />
         </columns>
       </TableView>
+      <Button layoutX="36.0" layoutY="23.0" mnemonicParsing="false" onAction="#backButton" prefHeight="26.0" prefWidth="58.0" text="Back" />
    </children>
 </AnchorPane>
