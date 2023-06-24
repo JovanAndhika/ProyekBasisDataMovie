@@ -35,7 +35,7 @@
               <items>
                 <MenuItem mnemonicParsing="false" onAction="#sceneSetLokasi" text="Lokasi sekarang" />
                   <MenuItem mnemonicParsing="false" text="Jadwal" />
-                  <MenuItem mnemonicParsing="false" text="Id_akun" />
+                  <MenuItem mnemonicParsing="false" onAction="#SceneSetAkun" text="Id_akun" />
               </items>
             </Menu>
         </menus>

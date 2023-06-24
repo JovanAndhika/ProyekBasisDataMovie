@@ -8,11 +8,13 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Stage;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -132,6 +134,14 @@ public class SetLokasiControl {
         tblkodeStudio.setCellValueFactory(new PropertyValueFactory<StudioBioskopProperty, String>("kodeStudio"));
         tblIdBioskop.setCellValueFactory(new PropertyValueFactory<StudioBioskopProperty, String>("idBioskop"));
         tblJumlahKursi.setCellValueFactory(new PropertyValueFactory<StudioBioskopProperty, Integer>("jumlahKursi"));
+    }
+
+    @FXML
+    protected void Back(){
+        HelloApplication app = HelloApplication.getApplicationInstance();
+        Stage primaryStage = app.getPrimaryStage();
+        Scene scene_awal = app.getSceneAwal();
+        primaryStage.setScene(scene_awal);
     }
 
 

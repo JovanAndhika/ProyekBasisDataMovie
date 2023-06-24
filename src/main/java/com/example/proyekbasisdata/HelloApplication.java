@@ -1,5 +1,6 @@
 package com.example.proyekbasisdata;
 
+import com.example.proyekbasisdata.MenuSet.SetAkunControl;
 import com.example.proyekbasisdata.MenuSet.SetLokasiControl;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -58,6 +59,11 @@ public class HelloApplication extends Application {
     private SetLokasiControl sceneSetLokasiControl;
 
 
+    //Scene Set Akun
+    private Scene sceneSetAkun;
+    private SetAkunControl sceneSetAkunControl;
+
+
     public HelloApplication(){
         applicationInstance = this;
     }
@@ -96,9 +102,20 @@ public class HelloApplication extends Application {
         sceneSetLokasi = new Scene(fxmlLoader.load(), 800, 600);
         sceneSetLokasiControl =  fxmlLoader.getController();
 
+        fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("SetAkun.fxml"));
+        sceneSetAkun = new Scene(fxmlLoader.load(), 800, 600);
+        sceneSetAkunControl =  fxmlLoader.getController();
+
         stage.setTitle("Hello!");
         stage.setScene(sceneAwal);
         stage.show();
+    }
+
+    public Scene getSceneSetAkun() {
+        return sceneSetAkun;
+    }
+    public SetAkunControl getSceneSetAkunControl() {
+        return sceneSetAkunControl;
     }
 
     public Scene getSceneSetLokasi() {
@@ -156,4 +173,5 @@ public class HelloApplication extends Application {
     public PurchaseTicketControl getScenePurchaseControl() {
         return scenePurchaseControl;
     }
+
 }

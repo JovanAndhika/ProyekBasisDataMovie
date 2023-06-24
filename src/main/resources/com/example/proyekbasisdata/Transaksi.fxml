@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.proyekbasisdata.TransaksiControl">
+   <children>
+      <TableView fx:id="tblTransaksi" layoutX="120.0" layoutY="57.0" prefHeight="305.0" prefWidth="362.0">
+        <columns>
+          <TableColumn fx:id="tblIdTransaksi" prefWidth="75.0" text="id_transaksi" />
+          <TableColumn fx:id="tblIdAkun" prefWidth="75.0" text="id_akun" />
+            <TableColumn fx:id="tblNamaKasir" prefWidth="75.0" text="nama_kasir" />
+            <TableColumn fx:id="tblTglTransaksi" prefWidth="135.99997558593748" text="tgl_transaksi" />
+        </columns>
+      </TableView>
+   </children>
+</AnchorPane>

@@ -15,11 +15,11 @@
       <TextField fx:id="field_idstudio" layoutX="122.0" layoutY="125.0" prefHeight="26.0" prefWidth="233.0" />
       <Text layoutX="48.0" layoutY="90.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ID bioskop" />
       <Text layoutX="48.0" layoutY="142.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ID Studio" wrappingWidth="57.029296875" />
-      <TableView fx:id="tblsetStudio" layoutX="407.0" layoutY="32.0" prefHeight="196.0" prefWidth="350.0">
+      <TableView fx:id="tblsetStudio" layoutX="407.0" layoutY="32.0" onMouseClicked="#getSelectedStudio" prefHeight="196.0" prefWidth="350.0">
         <columns>
-          <TableColumn fx:id="tblkodeStudio" prefWidth="100.0" text="C1" />
-          <TableColumn fx:id="tblIdBioskop" prefWidth="117.60003662109375" text="C2" />
-            <TableColumn fx:id="tblJumlahKursi" prefWidth="134.40008544921875" text="C2" />
+          <TableColumn fx:id="tblkodeStudio" prefWidth="100.0" text="kode_studio" />
+          <TableColumn fx:id="tblIdBioskop" prefWidth="117.60003662109375" text="id_bioskop" />
+            <TableColumn fx:id="tblJumlahKursi" prefWidth="134.40008544921875" text="jumlah_kursi" />
         </columns>
       </TableView>
       <TableView fx:id="table_setlokasiBioskop" layoutX="77.0" layoutY="300.0" onMouseClicked="#getSelected" prefHeight="258.0" prefWidth="634.0">
@@ -30,7 +30,7 @@
         </columns>
       </TableView>
       <Button layoutX="253.0" layoutY="166.0" mnemonicParsing="false" onAction="#ConfirmButton" text="CONFIRM" />
-      <Button layoutX="82.0" layoutY="166.0" mnemonicParsing="false" text="BACK" />
+      <Button layoutX="82.0" layoutY="166.0" mnemonicParsing="false" onAction="#Back" text="BACK" />
       <Button layoutX="541.0" layoutY="242.0" mnemonicParsing="false" onAction="#refresh" prefHeight="26.0" prefWidth="81.0" text="Refresh" />
       <Label fx:id="labelidbioskop" layoutX="82.0" layoutY="220.0" prefHeight="18.0" prefWidth="97.0" text="ini bioskopnya" />
       <Label fx:id="labelidstudio" layoutX="253.0" layoutY="221.0" prefHeight="18.0" prefWidth="69.0" text="ini studionya" />
