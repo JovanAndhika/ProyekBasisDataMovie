@@ -28,9 +28,9 @@ public class SetLokasiControl {
     @FXML
     TextField field_idstudio;
     @FXML
-    public Label labelidbioskop;
+    public static Label labelidbioskop;
     @FXML
-    public Label labelidstudio;
+    public static Label labelidstudio;
 
     //TABEL LOKASI
     @FXML

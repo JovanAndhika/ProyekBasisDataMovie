@@ -7,10 +7,7 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.example.proyekbasisdata.JadwalControl"
-            prefHeight="400.0" prefWidth="600.0">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.proyekbasisdata.JadwalControl">
     <children>
         <TableView fx:id="tblJadwal" layoutX="286.0" layoutY="52.0" onMouseClicked="#getSelected" prefHeight="240.0" prefWidth="275.0">
             <columns>
@@ -21,12 +18,13 @@
         <TextField fx:id="fieldkodeJadwal" layoutX="88.0" layoutY="85.0" />
         <Label layoutX="12.0" layoutY="89.0" text="Kode Jadwal" />
         <Label layoutX="16.0" layoutY="140.0" text="Jam Mulai" />
-        <Button layoutX="93.0" layoutY="210.0" mnemonicParsing="false" onAction="#onAddBtn" text="ADD" />
+        <Button fx:id="addBtn" layoutX="93.0" layoutY="210.0" mnemonicParsing="false" onAction="#onAddBtn" text="ADD" />
         <Button layoutX="188.0" layoutY="210.0" mnemonicParsing="false" onAction="#onClrBtn" text="CLEAR" />
         <Button fx:id="deleteBtn" layoutX="186.0" layoutY="291.0" mnemonicParsing="false" onAction="#onDeleteBtn" text="DELETE" />
         <Label layoutX="113.0" layoutY="44.0" prefHeight="17.0" prefWidth="100.0" text="TABEL JADWAL" />
         <TextField fx:id="fieldJamMulai" layoutX="89.0" layoutY="136.0" />
         <Label fx:id="danger" layoutX="286.0" layoutY="330.0" text="Tolong Isi Data!" />
         <Button fx:id="updateBtn" layoutX="78.0" layoutY="291.0" mnemonicParsing="false" onAction="#onUpdateBtn" text="UPDATE" />
+      <Button layoutX="19.0" layoutY="32.0" mnemonicParsing="false" onAction="#Back" text="BACK" />
     </children>
 </AnchorPane>

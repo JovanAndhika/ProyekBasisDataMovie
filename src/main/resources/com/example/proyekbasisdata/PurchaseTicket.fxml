@@ -25,18 +25,19 @@
             <TableColumn fx:id="kolom_kodejadwal" prefWidth="116.79998779296875" text="Kode jadwal" />
         </columns>
       </TableView>
-      <Button layoutX="43.0" layoutY="300.0" mnemonicParsing="false" onAction="#Back" prefHeight="26.0" prefWidth="64.0" text="Back" />
-      <TableView fx:id="table_purchase_ticket" layoutX="25.0" layoutY="354.0" prefHeight="200.0" prefWidth="437.0">
+      <Button layoutX="77.0" layoutY="259.0" mnemonicParsing="false" onAction="#Back" prefHeight="26.0" prefWidth="64.0" text="Back" />
+      <TableView fx:id="table_purchase_ticket" layoutX="41.0" layoutY="309.0" prefHeight="218.0" prefWidth="718.0">
         <columns>
-            <TableColumn fx:id="kolom_purchasejudul" prefWidth="147.20001220703125" text="judul" />
-            <TableColumn fx:id="kolom_nomorkursi" prefWidth="84.0" text="Nomor kursi" />
-            <TableColumn fx:id="kolom_harga" prefWidth="97.5999755859375" text="Harga" />
-            <TableColumn fx:id="kolom_purchasetanggal" prefWidth="108.00002441406252" text="Tanggal" />
+            <TableColumn fx:id="kolom_purchasejudul1" prefWidth="139.2000732421875" text="id_movie" />
+            <TableColumn fx:id="kolom_purchasejudul" prefWidth="217.5999755859375" text="Judul" />
+            <TableColumn fx:id="kolom_harga" prefWidth="132.79998779296875" text="Harga" />
+            <TableColumn fx:id="kolom_purchasetanggal" prefWidth="138.39996337890625" text="Tanggal" />
+            <TableColumn fx:id="kolom_nomorkursi" prefWidth="93.5999755859375" text="Nomor kursi" />
         </columns>
       </TableView>
-      <Button layoutX="175.0" layoutY="301.0" mnemonicParsing="false" onAction="#addTicketkeTabel" text="Add Ticket" />
-      <Button layoutX="488.0" layoutY="428.0" mnemonicParsing="false" onAction="#deletePurchaseTicket" text="Delete Ticket" />
-      <Button layoutX="553.0" layoutY="527.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="107.0" text="Make Order" />
+      <Button layoutX="248.0" layoutY="260.0" mnemonicParsing="false" onAction="#addTicketkeTabel" text="Add Ticket" />
+      <Button layoutX="479.0" layoutY="539.0" mnemonicParsing="false" onAction="#deletePurchaseTicket" text="Delete Ticket" />
+      <Button layoutX="613.0" layoutY="539.0" mnemonicParsing="false" onAction="#makeOrder" prefHeight="26.0" prefWidth="107.0" text="Make Order" />
       <Text layoutX="57.0" layoutY="56.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Id_Movie" />
       <TextField fx:id="fieldidmovie" layoutX="126.0" layoutY="39.0" prefHeight="26.0" prefWidth="158.0" />
    </children>

@@ -14,15 +14,13 @@ public class SetAkunControl {
     TextField setAkun;
 
     @FXML
-    public Label akunnow;
-
+    public static Label akunnow;
 
 
     @FXML
     Button submit;
     @FXML
     Button back;
-
 
 
     @FXML

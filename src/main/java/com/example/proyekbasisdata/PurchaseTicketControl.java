@@ -1,6 +1,7 @@
 package com.example.proyekbasisdata;
 
 import com.example.proyekbasisdata.MenuSet.SetAkunControl;
+import com.example.proyekbasisdata.MenuSet.SetLokasiControl;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -42,6 +43,8 @@ public class PurchaseTicketControl {
     //TABEL BELI TIKET
     @FXML
     protected TableView<PurchaseTicketProperty> table_purchase_ticket;
+    @FXML
+    protected TableColumn<PurchaseTicketProperty, String> kolom_purchaseidmovie;
     @FXML
     protected TableColumn<PurchaseTicketProperty, String> kolom_purchasejudul;
     @FXML
@@ -95,14 +98,16 @@ public class PurchaseTicketControl {
 
     @FXML
     protected void addTicketkeTabel() {
+        String idmoviediTicket = fieldidmovie.getText();
         String juduldiTicket = judulMovie.getText();
         String nomorKursi = nomerKursi.getText();
         int harga = Integer.parseInt(hargaTicket.getText());
         LocalDate tgldiTicket = tanggal.getValue();
         String hasilTgl = String.valueOf(tgldiTicket);
 
-        listPurchaseTicket.add(new PurchaseTicketProperty(juduldiTicket, nomorKursi, harga, hasilTgl));
+        listPurchaseTicket.add(new PurchaseTicketProperty(idmoviediTicket, juduldiTicket, nomorKursi, harga, hasilTgl));
         table_purchase_ticket.setItems(listPurchaseTicket);
+        kolom_purchaseidmovie.setCellValueFactory(new PropertyValueFactory<PurchaseTicketProperty, String>("purchaseidmovie"));
         kolom_purchasejudul.setCellValueFactory(new PropertyValueFactory<PurchaseTicketProperty, String>("purchasejudul"));
         kolom_nomorkursi.setCellValueFactory(new PropertyValueFactory<PurchaseTicketProperty, String>("purchasenomorkursi"));
         kolom_harga.setCellValueFactory(new PropertyValueFactory<PurchaseTicketProperty, Integer>("purchaseharga"));
@@ -120,21 +125,30 @@ public class PurchaseTicketControl {
     protected void makeOrder() {
         try {
             String namaKasir = "Alan";
-            SetAkunControl instansiasi = new SetAkunControl();
-            String namaAkun = instansiasi.akunnow.getText();
+            String namaAkun = SetAkunControl.akunnow.getText();
+
             //insert transaksi
             Connection con = HelloApplication.createDatabaseConnection();
             String query = "INSERT INTO transaksi(id_akun,nama_kasir) VALUES (?,?)";
             PreparedStatement ps = con.prepareStatement(query);
             ps.setString(1, namaAkun);
             ps.setString(2, namaKasir);
+            ps.executeUpdate();
+            con.close();
 
 
             //insert nota
             for(int i = 0; i < listPurchaseTicket.size(); i++){
-
+                query = "INSERT INTO transaksi(id_transaksi,id_movie,kode_studio,harga,tanggal_tayang,nomor_kursi) VALUES ((SELECT MAX(id_transaksi) FROM transaksi),?,?,?,?,?)";
+                ps = con.prepareStatement(query);
+                ps.setString(2,listPurchaseTicket.get(i).getPurhaseidmovie());
+                ps.setString(3, SetLokasiControl.labelidstudio.getText());
+                ps.setInt(4, listPurchaseTicket.get(i).getPurchaseharga());
+                ps.setString(5,listPurchaseTicket.get(i).getPurchasetanggal());
+                ps.setString(6,listPurchaseTicket.get(i).getPurchasenomorkursi());
             }
 
+            listPurchaseTicket.clear();
 
         } catch (SQLException e) {
             throw new RuntimeException(e);

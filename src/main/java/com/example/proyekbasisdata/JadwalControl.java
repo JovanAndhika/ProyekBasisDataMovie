@@ -2,8 +2,13 @@ package com.example.proyekbasisdata;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Stage;
+import javafx.stage.Window;
+
+import static com.example.proyekbasisdata.NamaMovieControl.showAlert;
 
 import java.sql.*;
 
@@ -11,24 +16,26 @@ public class JadwalControl {
     @FXML
     Label danger;
     @FXML
-    TableView<JadwalProperty> tblJadwal;
+    protected TableView<JadwalProperty> tblJadwal;
     @FXML
-    TableColumn<JadwalProperty, String> tblKodeJadwal;
+    protected TableColumn<JadwalProperty, String> tblKodeJadwal;
     @FXML
-    TableColumn<JadwalProperty, Integer> tblJamMulai;
+    protected TableColumn<JadwalProperty, Integer> tblJamMulai;
     @FXML
-    ObservableList<JadwalProperty> listjadwal = FXCollections.observableArrayList();
+    protected ObservableList<JadwalProperty> listjadwal = FXCollections.observableArrayList();
     @FXML
-    TextField fieldkodeJadwal;
+    protected TextField fieldkodeJadwal;
     @FXML
-    TextField fieldJamMulai;
+    protected TextField fieldJamMulai;
 
     @FXML
-    String kodejadwal;
+    protected String kodejadwal;
     @FXML
-    Button updateBtn;
+    protected Button updateBtn;
     @FXML
-    Button deleteBtn;
+    protected Button deleteBtn;
+    @FXML
+    protected Button addBtn;
 
     @FXML
     public void initialize() {
@@ -47,7 +54,6 @@ public class JadwalControl {
                 while (rs.next()) {
                     String kode_jadwal = rs.getString(1);
                     int jamMulai = rs.getInt(2);
-
 
                     listjadwal.add(new JadwalProperty(kode_jadwal, jamMulai));
                 }
@@ -98,26 +104,16 @@ public class JadwalControl {
 
                 preparedStatement.executeUpdate();
                 con.close();
-//
-//                Window owner = saveBtn.getScene().getWindow();
-//                showAlert(Alert.AlertType.CONFIRMATION, owner, "Registration Successful",
-//                        "data berhasil disave");
+
+                Window owner = addBtn.getScene().getWindow();
+                showAlert(Alert.AlertType.CONFIRMATION, owner, "Registration Successful",
+                        "data berhasil disave");
 
             } catch (SQLException | ClassNotFoundException e) {
                 throw new RuntimeException(e);
             }
         }
 
-//        public static void showAlert(
-//                Alert.AlertType _alertType, Window _owner,
-//                String _title, String _message){
-//            Alert alert = new Alert(_alertType);
-//            alert.setTitle(_title);
-//            alert.setHeaderText(null);
-//            alert.setContentText(_message);
-//            alert.initOwner(_owner);
-//            alert.show();
-//        }
 
         listjadwal.add(new JadwalProperty(fieldkodeJadwal.getText(), Integer.parseInt(fieldJamMulai.getText())));
         tblJadwal.setItems(listjadwal);
@@ -134,12 +130,11 @@ public class JadwalControl {
         } else {
             try {
                 Connection con = HelloApplication.createDatabaseConnection();
-                String query = "UPDATE jadwal " +
-                        "SET kode_jadwal =" + "'" + fieldkodeJadwal.getText() + "'," +
-                        "jam_mulai =" + Integer.parseInt(fieldJamMulai.getText()) + "," +
-                        "WHERE kode_jadwal =" + "'" + fieldkodeJadwal.getText() + "'";
+                String query = "UPDATE jadwal SET jam_mulai=? WHERE kode_jadwal=?";
 
                 PreparedStatement preparedStatement = con.prepareStatement(query);
+                preparedStatement.setInt(1, Integer.parseInt(fieldJamMulai.getText()));
+                preparedStatement.setString(2,fieldJamMulai.getText());
 
                 preparedStatement.execute();
                 con.close();
@@ -159,8 +154,6 @@ public class JadwalControl {
             fieldkodeJadwal.setText("");
             fieldJamMulai.setText("");
         }
-
-
     }
 
     @FXML
@@ -180,5 +173,13 @@ public class JadwalControl {
         }
         // update di javafx
         listjadwal.remove(index);
+    }
+
+    @FXML
+    protected void Back(){
+        HelloApplication app = HelloApplication.getApplicationInstance();
+        Stage primaryStage = app.getPrimaryStage();
+        Scene scene_awal = app.getSceneAwal();
+        primaryStage.setScene(scene_awal);
     }
 }

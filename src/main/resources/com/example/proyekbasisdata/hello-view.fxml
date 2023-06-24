@@ -28,13 +28,12 @@
             <Menu mnemonicParsing="false" text="Find">
               <items>
                   <MenuItem mnemonicParsing="false" text="Cari transaksi" />
-                  <MenuItem mnemonicParsing="false" text="Jadwal" />
               </items>
             </Menu>
             <Menu mnemonicParsing="false" text="Set">
               <items>
                 <MenuItem mnemonicParsing="false" onAction="#sceneSetLokasi" text="Lokasi sekarang" />
-                  <MenuItem mnemonicParsing="false" text="Jadwal" />
+                  <MenuItem mnemonicParsing="false" onAction="#sceneJadwal" text="Jadwal" />
                   <MenuItem mnemonicParsing="false" onAction="#SceneSetAkun" text="Id_akun" />
               </items>
             </Menu>

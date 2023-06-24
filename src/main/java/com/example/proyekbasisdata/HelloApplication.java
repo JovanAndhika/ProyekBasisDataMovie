@@ -63,6 +63,10 @@ public class HelloApplication extends Application {
     private Scene sceneSetAkun;
     private SetAkunControl sceneSetAkunControl;
 
+    //Scene Jadwal
+    private Scene sceneJadwal;
+    private JadwalControl sceneJadwalControl;
+
 
     public HelloApplication(){
         applicationInstance = this;
@@ -106,11 +110,21 @@ public class HelloApplication extends Application {
         sceneSetAkun = new Scene(fxmlLoader.load(), 800, 600);
         sceneSetAkunControl =  fxmlLoader.getController();
 
+        fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("Jadwal.fxml"));
+        sceneJadwal = new Scene(fxmlLoader.load(), 800, 600);
+        sceneJadwalControl =  fxmlLoader.getController();
+
         stage.setTitle("Hello!");
         stage.setScene(sceneAwal);
         stage.show();
     }
 
+    public Scene getSceneJadwal() {
+        return sceneJadwal;
+    }
+    public JadwalControl getSceneJadwalControl() {
+        return sceneJadwalControl;
+    }
     public Scene getSceneSetAkun() {
         return sceneSetAkun;
     }
