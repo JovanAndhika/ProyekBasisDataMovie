@@ -3,8 +3,10 @@ package com.example.proyekbasisdata;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Stage;
 import javafx.stage.Window;
 
 import java.sql.*;
@@ -25,6 +27,8 @@ public class PurchaseTicketControl {
 
     //TEXTFIELD TIKET
     @FXML
+    protected TextField fieldidmovie;
+    @FXML
     protected TextField judulMovie;
     @FXML
     protected TextField hargaTicket;
@@ -32,7 +36,6 @@ public class PurchaseTicketControl {
     protected DatePicker tanggal;
     @FXML
     protected TextField nomerKursi;
-
 
 
     //TABEL BELI TIKET
@@ -45,39 +48,34 @@ public class PurchaseTicketControl {
     @FXML
     protected TableColumn<PurchaseTicketProperty, String> kolom_nomorkursi;
     @FXML
-    protected  TableColumn<PurchaseTicketProperty, String> kolom_purchasetanggal;
+    protected TableColumn<PurchaseTicketProperty, String> kolom_purchasetanggal;
 
     protected ObservableList<PurchaseTicketProperty> listPurchaseTicket = FXCollections.observableArrayList();
 
 
-
     @FXML
-    public void initialize(){
+    public void initialize() {
         try {
             Connection con = HelloApplication.createDatabaseConnection();
             String query = "select id_movie, judul, kode_jadwal from nama_movie";
             Statement st = con.createStatement();
             ResultSet rs = st.executeQuery(query);
             int column_count = rs.getMetaData().getColumnCount();
-            if(column_count > 0) // ada data
+            if (column_count > 0) // ada data
             {
-                while (rs.next())
-                {
+                while (rs.next()) {
                     String id_movie = rs.getString(1);
                     String judul = rs.getString(2);
                     String kode_jadwal = rs.getString(3);
 
-                    listNamaMovie.add(new NamaMovieProperty(id_movie,judul,kode_jadwal));
+                    listNamaMovie.add(new NamaMovieProperty(id_movie, judul, kode_jadwal));
 
                 }
             }
             con.close();
-        }
-        catch(ClassNotFoundException e)
-        {
+        } catch (ClassNotFoundException e) {
             System.out.println(e);
-        }
-        catch (SQLException e) {
+        } catch (SQLException e) {
             System.out.println(e);
         }
 
@@ -88,9 +86,10 @@ public class PurchaseTicketControl {
     }
 
     @FXML
-    protected void getSelected(){
+    protected void getSelected() {
         int index = table_nama_movie.getSelectionModel().getSelectedIndex();
         judulMovie.setText(kolom_judul.getCellData(index));
+        fieldidmovie.setText(kolom_idmovie.getCellData(index));
     }
 
     @FXML
@@ -101,7 +100,7 @@ public class PurchaseTicketControl {
         LocalDate tgldiTicket = tanggal.getValue();
         String hasilTgl = String.valueOf(tgldiTicket);
 
-        listPurchaseTicket.add(new PurchaseTicketProperty(juduldiTicket,nomorKursi,harga,hasilTgl));
+        listPurchaseTicket.add(new PurchaseTicketProperty(juduldiTicket, nomorKursi, harga, hasilTgl));
         table_purchase_ticket.setItems(listPurchaseTicket);
         kolom_purchasejudul.setCellValueFactory(new PropertyValueFactory<PurchaseTicketProperty, String>("purchasejudul"));
         kolom_nomorkursi.setCellValueFactory(new PropertyValueFactory<PurchaseTicketProperty, String>("purchasenomorkursi"));
@@ -109,5 +108,31 @@ public class PurchaseTicketControl {
         kolom_purchasetanggal.setCellValueFactory(new PropertyValueFactory<PurchaseTicketProperty, String>("purchasetanggal"));
     }
 
+    @FXML
+    protected void deletePurchaseTicket() {
+        int index = table_purchase_ticket.getSelectionModel().getSelectedIndex();
+        listPurchaseTicket.remove(index);
+    }
 
+
+    @FXML
+    protected void makeOrder() {
+        try {
+            //insert transaksi
+            Connection con = HelloApplication.createDatabaseConnection();
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    @FXML
+    protected void Back(){
+        HelloApplication app = HelloApplication.getApplicationInstance();
+        Stage primaryStage = app.getPrimaryStage();
+        Scene scene_awal = app.getSceneAwal();
+        primaryStage.setScene(scene_awal);
+    }
 }

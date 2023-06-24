@@ -8,17 +8,16 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Text?>
 
-
 <AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.proyekbasisdata.PurchaseTicketControl">
    <children>
-      <TextField fx:id="judulMovie" layoutX="119.0" layoutY="52.0" prefHeight="26.0" prefWidth="233.0" />
-      <Text layoutX="38.0" layoutY="70.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Pilih movie :" />
-      <Text layoutX="38.0" layoutY="117.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Harga :" wrappingWidth="51.96875" />
-      <Text layoutX="38.0" layoutY="165.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tanggal tayang :" />
-      <TextField fx:id="hargaTicket" layoutX="119.0" layoutY="100.0" prefHeight="26.0" prefWidth="234.0" />
-      <DatePicker fx:id="tanggal" layoutX="149.0" layoutY="148.0" prefHeight="26.0" prefWidth="205.0" />
-      <TextField fx:id="nomerKursi" layoutX="126.0" layoutY="197.0" />
-      <Text layoutX="38.0" layoutY="214.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nomor kursi : " />
+      <TextField fx:id="judulMovie" layoutX="126.0" layoutY="86.0" prefHeight="26.0" prefWidth="233.0" />
+      <Text layoutX="49.0" layoutY="104.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Pilih movie :" />
+      <Text layoutX="57.0" layoutY="143.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Harga :" wrappingWidth="51.96875" />
+      <Text layoutX="31.0" layoutY="185.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tanggal tayang :" />
+      <TextField fx:id="hargaTicket" layoutX="126.0" layoutY="126.0" prefHeight="26.0" prefWidth="234.0" />
+      <DatePicker fx:id="tanggal" layoutX="126.0" layoutY="167.0" prefHeight="26.0" prefWidth="205.0" />
+      <TextField fx:id="nomerKursi" layoutX="126.0" layoutY="214.0" />
+      <Text layoutX="38.0" layoutY="231.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nomor kursi : " />
       <TableView fx:id="table_nama_movie" layoutX="400.0" layoutY="39.0" onMouseClicked="#getSelected" prefHeight="200.0" prefWidth="345.0">
         <columns>
           <TableColumn fx:id="kolom_idmovie" prefWidth="86.4000244140625" text="id_movie" />
@@ -26,7 +25,7 @@
             <TableColumn fx:id="kolom_kodejadwal" prefWidth="116.79998779296875" text="Kode jadwal" />
         </columns>
       </TableView>
-      <Button layoutX="43.0" layoutY="300.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="64.0" text="Back" />
+      <Button layoutX="43.0" layoutY="300.0" mnemonicParsing="false" onAction="#Back" prefHeight="26.0" prefWidth="64.0" text="Back" />
       <TableView fx:id="table_purchase_ticket" layoutX="25.0" layoutY="354.0" prefHeight="200.0" prefWidth="437.0">
         <columns>
             <TableColumn fx:id="kolom_purchasejudul" prefWidth="147.20001220703125" text="judul" />
@@ -36,7 +35,9 @@
         </columns>
       </TableView>
       <Button layoutX="175.0" layoutY="301.0" mnemonicParsing="false" onAction="#addTicketkeTabel" text="Add Ticket" />
-      <Button layoutX="488.0" layoutY="428.0" mnemonicParsing="false" text="Delete Ticket" />
+      <Button layoutX="488.0" layoutY="428.0" mnemonicParsing="false" onAction="#deletePurchaseTicket" text="Delete Ticket" />
       <Button layoutX="553.0" layoutY="527.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="107.0" text="Make Order" />
+      <Text layoutX="57.0" layoutY="56.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Id_Movie" />
+      <TextField fx:id="fieldidmovie" layoutX="126.0" layoutY="39.0" prefHeight="26.0" prefWidth="158.0" />
    </children>
 </AnchorPane>

@@ -1,5 +1,6 @@
 package com.example.proyekbasisdata;
 
+import com.example.proyekbasisdata.MenuSet.SetLokasiControl;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -51,6 +52,12 @@ public class HelloApplication extends Application {
     private Scene sceneStudioBios;
     private StudioBioskopControl sceneStudioBiosControl;
 
+
+    //Scene Set Lokasi
+    private Scene sceneSetLokasi;
+    private SetLokasiControl sceneSetLokasiControl;
+
+
     public HelloApplication(){
         applicationInstance = this;
     }
@@ -85,9 +92,21 @@ public class HelloApplication extends Application {
         sceneStudioBios = new Scene(fxmlLoader.load(), 800, 600);
         sceneStudioBiosControl =  fxmlLoader.getController();
 
+        fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("SetLokasi.fxml"));
+        sceneSetLokasi = new Scene(fxmlLoader.load(), 800, 600);
+        sceneSetLokasiControl =  fxmlLoader.getController();
+
         stage.setTitle("Hello!");
         stage.setScene(sceneAwal);
         stage.show();
+    }
+
+    public Scene getSceneSetLokasi() {
+        return sceneSetLokasi;
+    }
+
+    public SetLokasiControl getSceneSetLokasiControl() {
+        return sceneSetLokasiControl;
     }
 
     public Scene getSceneStudioBios() {

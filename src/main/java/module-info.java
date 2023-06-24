@@ -6,4 +6,7 @@ module com.example.proyekbasisdata {
 
     opens com.example.proyekbasisdata to javafx.fxml;
     exports com.example.proyekbasisdata;
+    opens com.example.proyekbasisdata.MenuSet to javafx.fxml;
+    exports com.example.proyekbasisdata.MenuSet;
+
 }

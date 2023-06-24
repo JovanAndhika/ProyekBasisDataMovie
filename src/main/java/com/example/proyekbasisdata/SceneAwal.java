@@ -45,4 +45,12 @@ public class SceneAwal {
         Scene studiobios = app.getSceneStudioBios();
         primaryStage.setScene(studiobios);
     }
+
+    @FXML
+    protected void sceneSetLokasi(){
+        HelloApplication app = HelloApplication.getApplicationInstance();
+        Stage primaryStage = app.getPrimaryStage();
+        Scene setLokasi = app.getSceneSetLokasi();
+        primaryStage.setScene(setLokasi);
+    }
 }
