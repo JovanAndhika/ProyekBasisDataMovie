@@ -1,5 +1,6 @@
 package com.example.proyekbasisdata;
 
+import com.example.proyekbasisdata.MenuSet.SetAkunControl;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -118,8 +119,22 @@ public class PurchaseTicketControl {
     @FXML
     protected void makeOrder() {
         try {
+            String namaKasir = "Alan";
+            SetAkunControl instansiasi = new SetAkunControl();
+            String namaAkun = instansiasi.akunnow.getText();
             //insert transaksi
             Connection con = HelloApplication.createDatabaseConnection();
+            String query = "INSERT INTO transaksi(id_akun,nama_kasir) VALUES (?,?)";
+            PreparedStatement ps = con.prepareStatement(query);
+            ps.setString(1, namaAkun);
+            ps.setString(2, namaKasir);
+
+
+            //insert nota
+            for(int i = 0; i < listPurchaseTicket.size(); i++){
+
+            }
+
 
         } catch (SQLException e) {
             throw new RuntimeException(e);

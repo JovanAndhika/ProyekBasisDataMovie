@@ -23,6 +23,8 @@ public class SetAkunControl {
     @FXML
     Button back;
 
+
+
     @FXML
     protected void setAkun(){
         akunnow.setText(setAkun.getText());
@@ -35,5 +37,6 @@ public class SetAkunControl {
         Scene scene_awal = app.getSceneAwal();
         primaryStage.setScene(scene_awal);
     }
+
 
 }
