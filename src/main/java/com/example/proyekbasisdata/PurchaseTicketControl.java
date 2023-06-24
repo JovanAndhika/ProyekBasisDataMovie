@@ -38,6 +38,8 @@ public class PurchaseTicketControl {
     protected DatePicker tanggal;
     @FXML
     protected TextField nomerKursi;
+    @FXML
+    protected Label labelbayar;
 
 
     //TABEL BELI TIKET
@@ -125,29 +127,36 @@ public class PurchaseTicketControl {
     protected void makeOrder() {
         try {
             String namaKasir = "Alan";
-            String namaAkun = SetAkunControl.akunnow.getText();
+            int idAkun = Integer.parseInt(SetAkunControl.akunHolder);
 
             //insert transaksi
             Connection con = HelloApplication.createDatabaseConnection();
             String query = "INSERT INTO transaksi(id_akun,nama_kasir) VALUES (?,?)";
             PreparedStatement ps = con.prepareStatement(query);
-            ps.setString(1, namaAkun);
+            ps.setInt(1, idAkun);
             ps.setString(2, namaKasir);
             ps.executeUpdate();
             con.close();
 
 
             //insert nota
+            int subtotal = 0;
+                con = HelloApplication.createDatabaseConnection();
             for(int i = 0; i < listPurchaseTicket.size(); i++){
-                query = "INSERT INTO transaksi(id_transaksi,id_movie,kode_studio,harga,tanggal_tayang,nomor_kursi) VALUES ((SELECT MAX(id_transaksi) FROM transaksi),?,?,?,?,?)";
+                query = "INSERT INTO tiket(id_movie,kode_studio,harga,tanggal_tayang,nomor_kursi,id_transaksi) VALUES (?,?,?,?,?,(SELECT MAX(id_transaksi) FROM transaksi))";
                 ps = con.prepareStatement(query);
-                ps.setString(2,listPurchaseTicket.get(i).getPurhaseidmovie());
-                ps.setString(3, SetLokasiControl.labelidstudio.getText());
-                ps.setInt(4, listPurchaseTicket.get(i).getPurchaseharga());
-                ps.setString(5,listPurchaseTicket.get(i).getPurchasetanggal());
-                ps.setString(6,listPurchaseTicket.get(i).getPurchasenomorkursi());
+                ps.setString(1,listPurchaseTicket.get(i).getPurchaseidmovie());
+                ps.setString(2, SetLokasiControl.idStudioHolder);
+                ps.setInt(3, listPurchaseTicket.get(i).getPurchaseharga());
+                ps.setString(4,listPurchaseTicket.get(i).getPurchasetanggal());
+                ps.setString(5,listPurchaseTicket.get(i).getPurchasenomorkursi());
+                ps.executeUpdate();
+                subtotal += listPurchaseTicket.get(i).getPurchaseharga();
             }
-
+            con.close();
+            hitungSubtotal(subtotal);
+            labelbayar.setText(String.valueOf(subtotal));
+            labelbayar.setVisible(true);
             listPurchaseTicket.clear();
 
         } catch (SQLException e) {
@@ -163,5 +172,26 @@ public class PurchaseTicketControl {
         Stage primaryStage = app.getPrimaryStage();
         Scene scene_awal = app.getSceneAwal();
         primaryStage.setScene(scene_awal);
+    }
+
+    @FXML
+    protected void refresh(){
+        table_nama_movie.getItems().clear();
+        initialize();
+    }
+
+    protected void hitungSubtotal(int subtotal){
+        try {
+            Connection con = HelloApplication.createDatabaseConnection();
+            String query = "INSERT INTO transaksi(subtotal) VALUES (?)";
+            PreparedStatement ps = con.prepareStatement(query);
+            ps.setInt(1, subtotal);
+
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
     }
 }

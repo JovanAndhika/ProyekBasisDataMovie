@@ -1,7 +1,7 @@
 package com.example.proyekbasisdata;
 
 public class PurchaseTicketProperty {
-    protected String purhaseidmovie;
+    protected String purchaseidmovie;
     protected String purchasejudul;
     protected String purchasenomorkursi;
     protected int purchaseharga;
@@ -11,15 +11,16 @@ public class PurchaseTicketProperty {
     }
 
     public PurchaseTicketProperty(String purchaseidmovie, String purchasejudul, String purchasenomorkursi, int purchaseharga, String purchasetanggal) {
-        this.purhaseidmovie = purchaseidmovie;
+        this.purchaseidmovie = purchaseidmovie;
         this.purchasejudul = purchasejudul;
         this.purchasenomorkursi = purchasenomorkursi;
         this.purchaseharga = purchaseharga;
         this.purchasetanggal = purchasetanggal;
     }
 
-    public String getPurhaseidmovie() {
-        return purhaseidmovie;
+
+    public String getPurchaseidmovie() {
+        return purchaseidmovie;
     }
 
     public String getPurchasejudul() {

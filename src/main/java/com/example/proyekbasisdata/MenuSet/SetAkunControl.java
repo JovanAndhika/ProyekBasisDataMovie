@@ -14,8 +14,8 @@ public class SetAkunControl {
     TextField setAkun;
 
     @FXML
-    public static Label akunnow;
-
+    public Label akunnow;
+    public static String akunHolder;
 
     @FXML
     Button submit;
@@ -26,6 +26,7 @@ public class SetAkunControl {
     @FXML
     protected void setAkun(){
         akunnow.setText(setAkun.getText());
+        akunHolder = akunnow.getText();
     }
 
     @FXML

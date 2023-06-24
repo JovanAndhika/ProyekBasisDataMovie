@@ -28,9 +28,12 @@ public class SetLokasiControl {
     @FXML
     TextField field_idstudio;
     @FXML
-    public static Label labelidbioskop;
+    public Label labelidbioskop;
     @FXML
-    public static Label labelidstudio;
+    public Label labelidstudio;
+
+    public static String idBioskopHolder;
+    public static String idStudioHolder;
 
     //TABEL LOKASI
     @FXML
@@ -92,6 +95,8 @@ public class SetLokasiControl {
     public void ConfirmButton() {
         labelidbioskop.setText(field_idbioskop.getText());
         labelidstudio.setText(field_idstudio.getText());
+        idBioskopHolder = labelidbioskop.getText();
+        idStudioHolder = labelidstudio.getText();
     }
 
     @FXML
