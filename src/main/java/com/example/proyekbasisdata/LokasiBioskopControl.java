@@ -80,9 +80,9 @@ public class LokasiBioskopControl {
 
             String query = "INSERT INTO lokasi_bioskop (id_bioskop, tempat, alamat) VALUES (?, ?, ?)";
             PreparedStatement preparedStatement = con.prepareStatement(query);
-            preparedStatement.setString(1, kol_id.getText());
-            preparedStatement.setString(2, kol_tempat.getText());
-            preparedStatement.setString(3, kol_alamat.getText());
+            preparedStatement.setString(1, field_id.getText());
+            preparedStatement.setString(2, field_tempat.getText());
+            preparedStatement.setString(3, field_tempat.getText());
 
             preparedStatement.executeUpdate();
             con.close();
@@ -105,9 +105,9 @@ public class LokasiBioskopControl {
         try {
             Connection con = HelloApplication.createDatabaseConnection();
             String query = "UPDATE lokasi_bioskop " +
-                    "SET id_bioskop="+"'"+kol_id.getText()+"',"+
-                    "tempat="+"'"+kol_tempat.getText()+"',"+
-                    "alamat="+"'"+kol_alamat.getText()+"',";
+                    "SET tempat="+"'"+field_tempat.getText()+"',"+
+                    "alamat="+"'"+field_alamat.getText()+"'"+
+                    "WHERE id_bioskop="+"'"+field_id.getText()+"'";
 
             PreparedStatement preparedStatement = con.prepareStatement(query);
 
@@ -128,7 +128,7 @@ public class LokasiBioskopControl {
     protected void deleteData(){
         try {
             Connection con = HelloApplication.createDatabaseConnection();
-            String query = "DELETE FROM nama_movie WHERE id_movie ="+"'"+field_id.getText()+"'";
+            String query = "DELETE FROM lokasi_bioskop WHERE id_bioskop ="+"'"+field_id.getText()+"'";
             PreparedStatement preparedStatement = con.prepareStatement(query);
             preparedStatement.execute();
             con.close();

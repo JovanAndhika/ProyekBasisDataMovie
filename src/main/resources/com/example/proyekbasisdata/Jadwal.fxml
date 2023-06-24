@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.example.proyekbasisdata.JadwalControl"
+            prefHeight="400.0" prefWidth="600.0">
+    <children>
+        <TableView fx:id="tblJadwal" layoutX="286.0" layoutY="52.0" onMouseClicked="#getSelected" prefHeight="240.0" prefWidth="275.0">
+            <columns>
+                <TableColumn fx:id="tblKodeJadwal" prefWidth="141.0" text="Kode_jadwal" />
+                <TableColumn fx:id="tblJamMulai" prefWidth="132.0" text="Jam_mulai" />
+            </columns>
+        </TableView>
+        <TextField fx:id="fieldkodeJadwal" layoutX="88.0" layoutY="85.0" />
+        <Label layoutX="12.0" layoutY="89.0" text="Kode Jadwal" />
+        <Label layoutX="16.0" layoutY="140.0" text="Jam Mulai" />
+        <Button layoutX="93.0" layoutY="210.0" mnemonicParsing="false" onAction="#onAddBtn" text="ADD" />
+        <Button layoutX="188.0" layoutY="210.0" mnemonicParsing="false" onAction="#onClrBtn" text="CLEAR" />
+        <Button fx:id="deleteBtn" layoutX="186.0" layoutY="291.0" mnemonicParsing="false" onAction="#onDeleteBtn" text="DELETE" />
+        <Label layoutX="113.0" layoutY="44.0" prefHeight="17.0" prefWidth="100.0" text="TABEL JADWAL" />
+        <TextField fx:id="fieldJamMulai" layoutX="89.0" layoutY="136.0" />
+        <Label fx:id="danger" layoutX="286.0" layoutY="330.0" text="Tolong Isi Data!" />
+        <Button fx:id="updateBtn" layoutX="78.0" layoutY="291.0" mnemonicParsing="false" onAction="#onUpdateBtn" text="UPDATE" />
+    </children>
+</AnchorPane>

@@ -47,6 +47,10 @@ public class HelloApplication extends Application {
     private PurchaseTicketControl scenePurchaseControl;
 
 
+    //Scene untuk add Studio Bioskop
+    private Scene sceneStudioBios;
+    private StudioBioskopControl sceneStudioBiosControl;
+
     public HelloApplication(){
         applicationInstance = this;
     }
@@ -77,9 +81,21 @@ public class HelloApplication extends Application {
         scenePurchaseTicket = new Scene(fxmlLoader.load(), 800, 600);
         scenePurchaseControl=  fxmlLoader.getController();
 
+        fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("StudioBioskop.fxml"));
+        sceneStudioBios = new Scene(fxmlLoader.load(), 800, 600);
+        sceneStudioBiosControl =  fxmlLoader.getController();
+
         stage.setTitle("Hello!");
         stage.setScene(sceneAwal);
         stage.show();
+    }
+
+    public Scene getSceneStudioBios() {
+        return sceneStudioBios;
+    }
+
+    public StudioBioskopControl getSceneStudioBiosControl() {
+        return sceneStudioBiosControl;
     }
 
     public static void main(String[] args) {

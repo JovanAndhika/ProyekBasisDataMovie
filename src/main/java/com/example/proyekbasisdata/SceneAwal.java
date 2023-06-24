@@ -20,9 +20,7 @@ public class SceneAwal {
         Stage primaryStage = app.getPrimaryStage();
         Scene lokasiBios = app.getSceneLokasiBios();
         primaryStage.setScene(lokasiBios);
-
     }
-
 
     @FXML
     protected void sceneInputMovie(){
@@ -38,5 +36,13 @@ public class SceneAwal {
         Stage primaryStage = app.getPrimaryStage();
         Scene purchase_ticket = app.getScenePurchaseTicket();
         primaryStage.setScene(purchase_ticket);
+    }
+
+    @FXML
+    protected void sceneAddStudio(){
+        HelloApplication app = HelloApplication.getApplicationInstance();
+        Stage primaryStage = app.getPrimaryStage();
+        Scene studiobios = app.getSceneStudioBios();
+        primaryStage.setScene(studiobios);
     }
 }

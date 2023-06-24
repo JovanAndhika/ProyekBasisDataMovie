@@ -47,7 +47,7 @@ public class PurchaseTicketControl {
     @FXML
     protected  TableColumn<PurchaseTicketProperty, String> kolom_purchasetanggal;
 
-    ObservableList<PurchaseTicketProperty> listPurchaseTicket = FXCollections.observableArrayList();
+    protected ObservableList<PurchaseTicketProperty> listPurchaseTicket = FXCollections.observableArrayList();
 
 
 

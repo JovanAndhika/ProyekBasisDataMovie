@@ -22,7 +22,7 @@
           <Menu mnemonicParsing="false" text="Location">
             <items>
               <MenuItem mnemonicParsing="false" onAction="#sceneAddLokasi" text="add location" />
-                  <MenuItem mnemonicParsing="false" text="add studio" />
+                  <MenuItem mnemonicParsing="false" onAction="#sceneAddStudio" text="add studio" />
             </items>
           </Menu>
             <Menu mnemonicParsing="false" text="Find">
