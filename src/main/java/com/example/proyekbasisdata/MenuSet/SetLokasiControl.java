@@ -114,6 +114,7 @@ public class SetLokasiControl {
 
     @FXML
     protected void refresh(){
+    listStudio.clear();
         try{
             Connection con = HelloApplication.createDatabaseConnection();
             String query = "SELECT * FROM studio_bioskop WHERE id_bioskop="+"'"+field_idbioskop.getText()+"'";

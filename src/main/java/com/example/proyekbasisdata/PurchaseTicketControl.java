@@ -9,7 +9,6 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
-import javafx.stage.Window;
 
 import java.sql.*;
 import java.time.LocalDate;
@@ -52,12 +51,14 @@ public class PurchaseTicketControl {
     @FXML
     protected TableColumn<PurchaseTicketProperty, Integer> kolom_harga;
     @FXML
-    protected TableColumn<PurchaseTicketProperty, String> kolom_nomorkursi;
+    protected TableColumn<PurchaseTicketProperty, LocalDate> kolom_purchasetanggal;
     @FXML
-    protected TableColumn<PurchaseTicketProperty, String> kolom_purchasetanggal;
+    protected TableColumn<PurchaseTicketProperty, String> kolom_nomorkursi;
+
 
     protected ObservableList<PurchaseTicketProperty> listPurchaseTicket = FXCollections.observableArrayList();
 
+    int subtotal = 0;
 
     @FXML
     public void initialize() {
@@ -100,20 +101,22 @@ public class PurchaseTicketControl {
 
     @FXML
     protected void addTicketkeTabel() {
+
         String idmoviediTicket = fieldidmovie.getText();
         String juduldiTicket = judulMovie.getText();
         String nomorKursi = nomerKursi.getText();
         int harga = Integer.parseInt(hargaTicket.getText());
         LocalDate tgldiTicket = tanggal.getValue();
-        String hasilTgl = String.valueOf(tgldiTicket);
 
-        listPurchaseTicket.add(new PurchaseTicketProperty(idmoviediTicket, juduldiTicket, nomorKursi, harga, hasilTgl));
+        subtotal += harga;
+
+        listPurchaseTicket.add(new PurchaseTicketProperty(idmoviediTicket, juduldiTicket, nomorKursi, harga, tgldiTicket));
         table_purchase_ticket.setItems(listPurchaseTicket);
         kolom_purchaseidmovie.setCellValueFactory(new PropertyValueFactory<PurchaseTicketProperty, String>("purchaseidmovie"));
         kolom_purchasejudul.setCellValueFactory(new PropertyValueFactory<PurchaseTicketProperty, String>("purchasejudul"));
         kolom_nomorkursi.setCellValueFactory(new PropertyValueFactory<PurchaseTicketProperty, String>("purchasenomorkursi"));
         kolom_harga.setCellValueFactory(new PropertyValueFactory<PurchaseTicketProperty, Integer>("purchaseharga"));
-        kolom_purchasetanggal.setCellValueFactory(new PropertyValueFactory<PurchaseTicketProperty, String>("purchasetanggal"));
+        kolom_purchasetanggal.setCellValueFactory(new PropertyValueFactory<PurchaseTicketProperty, LocalDate>("purchasetanggal"));
     }
 
     @FXML
@@ -125,39 +128,38 @@ public class PurchaseTicketControl {
 
     @FXML
     protected void makeOrder() {
+        labelbayar.setText(String.valueOf(subtotal));
         try {
             String namaKasir = "Alan";
             int idAkun = Integer.parseInt(SetAkunControl.akunHolder);
 
             //insert transaksi
             Connection con = HelloApplication.createDatabaseConnection();
-            String query = "INSERT INTO transaksi(id_akun,nama_kasir) VALUES (?,?)";
+            String query = "INSERT INTO transaksi(id_akun,nama_kasir,subtotal) VALUES (?,?,?)";
             PreparedStatement ps = con.prepareStatement(query);
             ps.setInt(1, idAkun);
             ps.setString(2, namaKasir);
+            ps.setInt(3,subtotal);
             ps.executeUpdate();
-            con.close();
 
 
-            //insert nota
-            int subtotal = 0;
-                con = HelloApplication.createDatabaseConnection();
+            //insert nota tiket
             for(int i = 0; i < listPurchaseTicket.size(); i++){
+                con = HelloApplication.createDatabaseConnection();
                 query = "INSERT INTO tiket(id_movie,kode_studio,harga,tanggal_tayang,nomor_kursi,id_transaksi) VALUES (?,?,?,?,?,(SELECT MAX(id_transaksi) FROM transaksi))";
                 ps = con.prepareStatement(query);
                 ps.setString(1,listPurchaseTicket.get(i).getPurchaseidmovie());
                 ps.setString(2, SetLokasiControl.idStudioHolder);
                 ps.setInt(3, listPurchaseTicket.get(i).getPurchaseharga());
-                ps.setString(4,listPurchaseTicket.get(i).getPurchasetanggal());
+                ps.setString(4,String.valueOf(listPurchaseTicket.get(i).getPurchasetanggal()));
                 ps.setString(5,listPurchaseTicket.get(i).getPurchasenomorkursi());
                 ps.executeUpdate();
-                subtotal += listPurchaseTicket.get(i).getPurchaseharga();
             }
+
+
             con.close();
-            hitungSubtotal(subtotal);
-            labelbayar.setText(String.valueOf(subtotal));
-            labelbayar.setVisible(true);
             listPurchaseTicket.clear();
+            subtotal = 0;
 
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -180,18 +182,4 @@ public class PurchaseTicketControl {
         initialize();
     }
 
-    protected void hitungSubtotal(int subtotal){
-        try {
-            Connection con = HelloApplication.createDatabaseConnection();
-            String query = "INSERT INTO transaksi(subtotal) VALUES (?)";
-            PreparedStatement ps = con.prepareStatement(query);
-            ps.setInt(1, subtotal);
-
-        } catch (ClassNotFoundException e) {
-            throw new RuntimeException(e);
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-
-    }
 }

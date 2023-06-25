@@ -15,17 +15,17 @@
       <TextField fx:id="fieldnamaLisensor" layoutX="380.0" layoutY="110.0" prefHeight="26.0" prefWidth="215.0" />
       <Text layoutX="205.0" layoutY="74.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Masukkan id Lisensor :" />
       <Text layoutX="184.0" layoutY="128.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Masukkan nama Lisensor :" wrappingWidth="141.43316650390625" />
-      <TableView fx:id="tabel_Lisensor" layoutX="54.0" layoutY="214.0" prefHeight="337.0" prefWidth="690.0">
+      <TableView fx:id="tabel_Lisensor" layoutX="54.0" layoutY="214.0" onMouseClicked="#getSelected" prefHeight="337.0" prefWidth="690.0">
         <columns>
           <TableColumn fx:id="kol_idlisensor" prefWidth="287.20001220703125" text="Id Lisensor" />
           <TableColumn fx:id="kol_namalisensor" prefWidth="396.0" text="Nama Lisensor" />
         </columns>
       </TableView>
       <Label fx:id="danger" layoutX="361.0" layoutY="21.0" text="Harap isi data!" />
-      <Button fx:id="submit" layoutX="551.0" layoutY="163.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="87.0" text="Insert" />
-      <Button layoutX="410.0" layoutY="163.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="87.0" text="Update" />
-      <Button layoutX="273.0" layoutY="163.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="87.0" text="Delete" />
-      <Button layoutX="140.0" layoutY="163.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="87.0" text="Clear" />
-      <Button layoutX="31.0" layoutY="26.0" mnemonicParsing="false" text="BACK" />
+      <Button fx:id="submit" layoutX="551.0" layoutY="163.0" mnemonicParsing="false" onAction="#onAddBtn" prefHeight="26.0" prefWidth="87.0" text="Insert" />
+      <Button layoutX="410.0" layoutY="163.0" mnemonicParsing="false" onAction="#onUpdateBtn" prefHeight="26.0" prefWidth="87.0" text="Update" />
+      <Button layoutX="273.0" layoutY="163.0" mnemonicParsing="false" onAction="#onDeleteBtn" prefHeight="26.0" prefWidth="87.0" text="Delete" />
+      <Button layoutX="140.0" layoutY="163.0" mnemonicParsing="false" onAction="#onClrBtn" prefHeight="26.0" prefWidth="87.0" text="Clear" />
+      <Button layoutX="31.0" layoutY="26.0" mnemonicParsing="false" onAction="#tombolBack" text="BACK" />
    </children>
 </AnchorPane>

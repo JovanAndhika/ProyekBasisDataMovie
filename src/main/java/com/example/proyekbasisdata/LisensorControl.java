@@ -40,7 +40,7 @@ public class LisensorControl {
     public void initialize() {
         try {
             Connection con = HelloApplication.createDatabaseConnection();
-            String query = "SELECT * FROM lisensor";
+            String query = "SELECT * FROM nama_lisensor";
             Statement st = con.createStatement();
             ResultSet rs = st.executeQuery(query);
             int column_count = rs.getMetaData().getColumnCount();
@@ -71,7 +71,7 @@ public class LisensorControl {
         } else {
             try {
                 Connection con = HelloApplication.createDatabaseConnection();
-                String query = "INSERT INTO lisensor (id_lisensor,nama_lisensor) VALUES (?, ?)";
+                String query = "INSERT INTO nama_lisensor (id_lisensor,nama_lisensor) VALUES (?, ?)";
                 PreparedStatement preparedStatement = con.prepareStatement(query);
                 preparedStatement.setString(1, fieldIdlisensor.getText());
                 preparedStatement.setString(2, fieldnamaLisensor.getText());
@@ -105,7 +105,7 @@ public class LisensorControl {
         } else {
             try {
                 Connection con = HelloApplication.createDatabaseConnection();
-                String query = "UPDATE lisensor SET nama_lisensor=? WHERE id_lisensor=?";
+                String query = "UPDATE nama_lisensor SET nama_lisensor=? WHERE id_lisensor=?";
 
                 PreparedStatement preparedStatement = con.prepareStatement(query);
                 preparedStatement.setString(1, fieldIdlisensor.getText());
@@ -131,7 +131,7 @@ public class LisensorControl {
     private void onDeleteBtn() {
         try {
             Connection con = HelloApplication.createDatabaseConnection();
-            String query = "DELETE FROM lisensor WHERE id_lisensor =" + "'" + fieldIdlisensor.getText() + "'";
+            String query = "DELETE FROM nama_lisensor WHERE id_lisensor =" + "'" + fieldIdlisensor.getText() + "'";
             PreparedStatement preparedStatement = con.prepareStatement(query);
             preparedStatement.execute();
             con.close();
@@ -144,6 +144,18 @@ public class LisensorControl {
         listLisensor.remove(index);
     }
 
+    @FXML
+    protected void onClrBtn() {
+        fieldIdlisensor.setText("");
+        fieldnamaLisensor.setText("");
+    }
+
+    @FXML
+    protected void getSelected(){
+        int index = tabel_Lisensor.getSelectionModel().getSelectedIndex();
+        fieldIdlisensor.setText(kol_idlisensor.getCellData(index));
+        fieldnamaLisensor.setText(kol_namalisensor.getCellData(index));
+    }
 
     @FXML
     protected void tombolBack() {

@@ -43,6 +43,6 @@
       <TextField fx:id="fieldidmovie" layoutX="126.0" layoutY="39.0" prefHeight="26.0" prefWidth="158.0" />
       <Button layoutX="535.0" layoutY="247.0" mnemonicParsing="false" onAction="#refresh" prefHeight="26.0" prefWidth="75.0" text="Refresh" />
       <Text layoutX="51.0" layoutY="556.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Bayar :" wrappingWidth="47.97656249999994" />
-      <Label fx:id="labelbayar" layoutX="99.0" layoutY="544.0" prefHeight="18.0" prefWidth="126.0" text="Label" visible="false" />
+      <Label fx:id="labelbayar" layoutX="99.0" layoutY="544.0" prefHeight="18.0" prefWidth="126.0" text="Label" />
    </children>
 </AnchorPane>

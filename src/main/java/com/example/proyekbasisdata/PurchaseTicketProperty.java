@@ -1,16 +1,19 @@
 package com.example.proyekbasisdata;
 
+import java.sql.Date;
+import java.time.LocalDate;
+
 public class PurchaseTicketProperty {
     protected String purchaseidmovie;
     protected String purchasejudul;
     protected String purchasenomorkursi;
     protected int purchaseharga;
-    protected String purchasetanggal;
+    protected LocalDate purchasetanggal;
 
     public PurchaseTicketProperty() {
     }
 
-    public PurchaseTicketProperty(String purchaseidmovie, String purchasejudul, String purchasenomorkursi, int purchaseharga, String purchasetanggal) {
+    public PurchaseTicketProperty(String purchaseidmovie, String purchasejudul, String purchasenomorkursi, int purchaseharga, LocalDate purchasetanggal) {
         this.purchaseidmovie = purchaseidmovie;
         this.purchasejudul = purchasejudul;
         this.purchasenomorkursi = purchasenomorkursi;
@@ -35,7 +38,7 @@ public class PurchaseTicketProperty {
         return purchaseharga;
     }
 
-    public String getPurchasetanggal() {
+    public LocalDate getPurchasetanggal() {
         return purchasetanggal;
     }
 }
