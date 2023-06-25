@@ -88,7 +88,7 @@ public class SetLokasiControl {
 
         table_setlokasiBioskop.setItems(listLokasiBioskop);
         kol_setid.setCellValueFactory(new PropertyValueFactory<LokasiBioskopProperty, String>("id_bioskop"));
-       kol_settempat.setCellValueFactory(new PropertyValueFactory<LokasiBioskopProperty, String>("tempat"));
+        kol_settempat.setCellValueFactory(new PropertyValueFactory<LokasiBioskopProperty, String>("tempat"));
         kol_setalamat.setCellValueFactory(new PropertyValueFactory<LokasiBioskopProperty, String>("alamat"));
     }
 
@@ -140,6 +140,10 @@ public class SetLokasiControl {
         tblkodeStudio.setCellValueFactory(new PropertyValueFactory<StudioBioskopProperty, String>("kodeStudio"));
         tblIdBioskop.setCellValueFactory(new PropertyValueFactory<StudioBioskopProperty, String>("idBioskop"));
         tblJumlahKursi.setCellValueFactory(new PropertyValueFactory<StudioBioskopProperty, Integer>("jumlahKursi"));
+
+
+        table_setlokasiBioskop.getItems().clear();
+        initialize();
     }
 
     @FXML
