@@ -10,10 +10,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 
 public class SceneAwal {
     //TABEL
@@ -28,8 +25,6 @@ public class SceneAwal {
     ObservableList<SceneAwalProperty> Main_Transaksi = FXCollections.observableArrayList();
 
 
-    //ATTRIBUTES
-    public static int jumlahPendapatan = 0;
     @FXML
     private Label pendapatan;
 
@@ -71,8 +66,28 @@ public class SceneAwal {
 
     @FXML
     protected void refreshButton(){
+        int pendapatanTotal = 0;
         tblTransaksi.getItems().clear();
         initialize();
+        try {
+            Connection con = HelloApplication.createDatabaseConnection();
+            String query = """
+                    SELECT SUM(t.subtotal)
+                    FROM transaksi t
+                    """;
+            Statement st = con.createStatement();
+            ResultSet rs = st.executeQuery(query);
+            while(rs.next()){
+                pendapatanTotal = rs.getInt(1);
+            }
+
+            pendapatan.setText(String.valueOf(pendapatanTotal));
+            con.close();
+        } catch (ClassNotFoundException e) {
+            System.out.println(e);
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
     }
 
     @FXML

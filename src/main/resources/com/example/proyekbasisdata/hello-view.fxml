@@ -59,6 +59,6 @@
             <Font size="16.0" />
          </font>
       </Text>
-      <Label alignment="CENTER" layoutX="408.0" layoutY="70.0" prefHeight="18.0" prefWidth="337.0" text="Label" textAlignment="CENTER" />
+      <Label fx:id="pendapatan" alignment="CENTER" layoutX="408.0" layoutY="70.0" prefHeight="18.0" prefWidth="337.0" text="Label" textAlignment="CENTER" />
    </children>
 </AnchorPane>
