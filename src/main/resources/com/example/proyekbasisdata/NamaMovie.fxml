@@ -6,16 +6,10 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="412.0" prefWidth="1096.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.proyekbasisdata.NamaMovieControl">
+<AnchorPane prefHeight="500.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.proyekbasisdata.NamaMovieControl">
 
     <children>
-        <Label layoutX="121.0" layoutY="14.0" prefHeight="600" prefWidth="1000" text="TABEL NAMA MOVIE" textAlignment="CENTER" textFill="#0c6680">
-            <font>
-                <Font name="System Bold" size="15.0" />
-            </font>
-        </Label>
         <Label layoutX="14.0" layoutY="62.0" prefHeight="17.0" prefWidth="95.0" text="ID MOVIE" />
         <Label layoutX="14.0" layoutY="95.0" prefHeight="17.0" prefWidth="95.0" text="ID LISENSOR" />
         <Label layoutX="14.0" layoutY="129.0" prefHeight="17.0" prefWidth="95.0" text="KODE JADWAL" />
@@ -24,19 +18,6 @@
         <Label layoutX="14.0" layoutY="232.0" prefHeight="17.0" prefWidth="95.0" text="GENRE" />
         <Label layoutX="14.0" layoutY="300.0" prefHeight="17.0" prefWidth="95.0" text="SUTRADARA" />
         <Label layoutX="14.0" layoutY="332.0" prefHeight="17.0" prefWidth="95.0" text="DIMENSI" />
-        <TableView fx:id="tbl_nama_movie" layoutX="385.0" layoutY="3.0" onMouseClicked="#getSelected" prefHeight="394.0" prefWidth="711.0">
-            <columns>
-                <TableColumn fx:id="colIdMovie" prefWidth="75.0" text="id_movie" />
-                <TableColumn fx:id="colIdLisensor" prefWidth="75.0" text="id_lisensor" />
-                <TableColumn fx:id="colKodeJadwal" prefWidth="75.0" text="kode_jadwal" />
-                <TableColumn fx:id="colJudul" prefWidth="75.0" text="judul" />
-                <TableColumn fx:id="colDurasi" prefWidth="75.0" text="durasi" />
-                <TableColumn fx:id="colGenre" prefWidth="75.0" text="genre" />
-                <TableColumn fx:id="colTahunProduksi" prefWidth="98.0" text="tahun_produksi" />
-                <TableColumn fx:id="colSutradara" prefWidth="75.0" text="Sutradara" />
-                <TableColumn fx:id="colDimensi" prefWidth="52.0" text="Dimensi" />
-            </columns>
-        </TableView>
         <TextField fx:id="fieldIdMovie" layoutX="126.0" layoutY="58.0" />
         <TextField fx:id="fieldIdLisensor" layoutX="126.0" layoutY="91.0" />
         <TextField fx:id="fieldKodeJadwal" layoutX="126.0" layoutY="125.0" />
@@ -47,10 +28,24 @@
         <TextField fx:id="fieldDimensi" layoutX="126.0" layoutY="328.0" />
         <Label layoutX="14.0" layoutY="268.0" prefHeight="17.0" prefWidth="104.0" text="TAHUN PRODUKSI" />
         <Button fx:id="clearBtn" layoutX="307.0" layoutY="25.0" mnemonicParsing="false" onAction="#onClrBtn" prefHeight="26.0" prefWidth="61.0" text="CLEAR" />
-        <Button fx:id="saveBtn" layoutX="41.0" layoutY="369.0" mnemonicParsing="false" onAction="#insertData" prefHeight="25.0" prefWidth="50.0" text="SAVE" />
+        <Button fx:id="saveBtn" layoutX="41.0" layoutY="382.0" mnemonicParsing="false" onAction="#insertData" prefHeight="25.0" prefWidth="50.0" text="SAVE" />
       <TextField fx:id="fieldTahunProduksi" layoutX="126.0" layoutY="264.0" />
-      <Button layoutX="159.0" layoutY="369.0" mnemonicParsing="false" onAction="#updateData" text="UPDATE" />
-      <Button layoutX="281.0" layoutY="369.0" mnemonicParsing="false" onAction="#deleteData" text="DELETE" />
+      <Button layoutX="157.0" layoutY="382.0" mnemonicParsing="false" onAction="#updateData" text="UPDATE" />
+      <Button layoutX="279.0" layoutY="382.0" mnemonicParsing="false" onAction="#deleteData" text="DELETE" />
       <Button fx:id="tombolBack" layoutX="27.0" layoutY="14.0" mnemonicParsing="false" onAction="#backButton" text="BACK" />
+        <TableView fx:id="tbl_nama_movie" layoutX="394.0" layoutY="22.0" onMouseClicked="#getSelected" prefHeight="394.0" prefWidth="691.0">
+            <columns>
+                <TableColumn fx:id="colIdMovie" prefWidth="76.0" text="id_movie" />
+                <TableColumn fx:id="colIdLisensor" prefWidth="75.199951171875" text="id_lisensor" />
+                <TableColumn fx:id="colKodeJadwal" prefWidth="67.20001220703125" text="kode_jadwal" />
+                <TableColumn fx:id="colJudul" prefWidth="143.199951171875" text="judul" />
+                <TableColumn fx:id="colDurasi" prefWidth="59.20001220703125" text="durasi" />
+                <TableColumn fx:id="colGenre" prefWidth="66.4000244140625" text="genre" />
+                <TableColumn fx:id="colTahunProduksi" prefWidth="67.199951171875" text="tahun_produksi" />
+                <TableColumn fx:id="colSutradara" prefWidth="75.0" text="Sutradara" />
+                <TableColumn fx:id="colDimensi" prefWidth="52.0" text="Dimensi" />
+            </columns>
+        </TableView>
+      <Label alignment="CENTER" layoutX="125.0" layoutY="17.0" prefHeight="18.0" prefWidth="150.0" text="TABEL NAMA MOVIE" textAlignment="CENTER" textFill="#4d2acc" />
     </children>
 </AnchorPane>

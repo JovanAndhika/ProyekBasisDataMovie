@@ -72,6 +72,11 @@ public class HelloApplication extends Application {
     private TransaksiControl sceneTransaksiControl;
 
 
+    //Scene Lisensor
+    private Scene sceneLisensor;
+    private LisensorControl sceneLisensorControl;
+
+
     public HelloApplication(){
         applicationInstance = this;
     }
@@ -95,7 +100,7 @@ public class HelloApplication extends Application {
         sceneLokasiBiosControl =  fxmlLoader.getController();
 
         fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("NamaMovie.fxml"));
-        sceneNamaMovie = new Scene(fxmlLoader.load(), 800, 600);
+        sceneNamaMovie = new Scene(fxmlLoader.load(), 1000, 500);
         sceneNamaMovieControl =  fxmlLoader.getController();
 
         fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("PurchaseTicket.fxml"));
@@ -122,9 +127,21 @@ public class HelloApplication extends Application {
         sceneTransaksi = new Scene(fxmlLoader.load(), 800, 600);
         sceneTransaksiControl =  fxmlLoader.getController();
 
+        fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("Lisensor.fxml"));
+        sceneLisensor = new Scene(fxmlLoader.load(), 800, 600);
+        sceneLisensorControl =  fxmlLoader.getController();
+
         stage.setTitle("Hello!");
         stage.setScene(sceneAwal);
         stage.show();
+    }
+
+    public Scene getSceneLisensor() {
+        return sceneLisensor;
+    }
+
+    public LisensorControl getSceneLisensorControl() {
+        return sceneLisensorControl;
     }
 
     public Scene getSceneTransaksi() {

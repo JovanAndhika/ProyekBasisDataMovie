@@ -12,6 +12,7 @@
           <Menu mnemonicParsing="false" text="Movie">
             <items>
               <MenuItem mnemonicParsing="false" onAction="#sceneInputMovie" text="Input movie" />
+                  <MenuItem mnemonicParsing="false" onAction="#sceneLisensor" text="Input Lisensor" />
             </items>
           </Menu>
           <Menu mnemonicParsing="false" text="Purchase">
