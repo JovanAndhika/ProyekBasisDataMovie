@@ -1,17 +1,78 @@
 package com.example.proyekbasisdata;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+
 public class SceneAwal {
+    //TABEL
     @FXML
-    private Label welcomeText;
+    protected TableView<SceneAwalProperty> tblTransaksi;
+    @FXML
+    protected TableColumn<SceneAwalProperty, Integer> kol_idakun;
+    @FXML
+    protected TableColumn<SceneAwalProperty, String> kol_namapemilik;
+    @FXML
+    protected TableColumn<SceneAwalProperty, Integer> kol_jumlahtransaksi;
+    ObservableList<SceneAwalProperty> Main_Transaksi = FXCollections.observableArrayList();
+
+
+    //ATTRIBUTES
+    public static int jumlahPendapatan = 0;
+    @FXML
+    private Label pendapatan;
+
 
     @FXML
-    protected void onHelloButtonClick() {
-        welcomeText.setText("Welcome to JavaFX Application!");
+    public void initialize() {
+        try {
+            Connection con = HelloApplication.createDatabaseConnection();
+            String query = """
+                    SELECT au.id_akun, au.nama_pemilik, COUNT(*) AS jumlah_transaksi
+                    FROM transaksi t
+                    INNER JOIN akun_user au ON t.id_akun = au.id_akun
+                    GROUP BY au.id_akun, au.nama_pemilik
+                    ORDER BY jumlah_transaksi DESC
+                    LIMIT 10;
+                    """;
+            Statement st = con.createStatement();
+            ResultSet rs = st.executeQuery(query);
+            int column_count = rs.getMetaData().getColumnCount();
+            if (column_count > 0) {
+                while (rs.next()) {
+                    int main_idakun = rs.getInt(1);
+                    String main_namapemilik = rs.getString(2);
+                    int main_jumlahtransaksi = rs.getInt(3);
+                    Main_Transaksi.add(new SceneAwalProperty(main_idakun,main_namapemilik,main_jumlahtransaksi));
+                }
+            }
+            con.close();
+        } catch (ClassNotFoundException e) {
+            System.out.println(e);
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+        tblTransaksi.setItems(Main_Transaksi);
+        kol_idakun.setCellValueFactory(new PropertyValueFactory<SceneAwalProperty, Integer>("id_akun"));
+        kol_namapemilik.setCellValueFactory(new PropertyValueFactory<SceneAwalProperty, String>("nama_pemilik"));
+        kol_jumlahtransaksi.setCellValueFactory(new PropertyValueFactory<SceneAwalProperty,Integer>("jumlah_transaksi"));
+    }
+
+    @FXML
+    protected void refreshButton(){
+        tblTransaksi.getItems().clear();
+        initialize();
     }
 
     @FXML

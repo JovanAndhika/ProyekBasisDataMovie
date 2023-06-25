@@ -16,5 +16,6 @@
         </columns>
       </TableView>
       <Button layoutX="36.0" layoutY="23.0" mnemonicParsing="false" onAction="#backButton" prefHeight="26.0" prefWidth="58.0" text="Back" />
+      <Button layoutX="665.0" layoutY="24.0" mnemonicParsing="false" onAction="#refreshButton" text="Refresh" />
    </children>
 </AnchorPane>

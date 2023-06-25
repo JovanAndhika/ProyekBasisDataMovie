@@ -2,16 +2,49 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.proyekbasisdata.MenuSet.SetAkunControl">
+<AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.proyekbasisdata.MenuSet.SetAkunControl">
    <children>
-      <Text layoutX="245.0" layoutY="51.0" strokeType="OUTSIDE" strokeWidth="0.0" text="masukkan id akun" wrappingWidth="109.7496337890625" />
-      <TextField fx:id="setAkun" layoutX="138.0" layoutY="80.0" prefHeight="26.0" prefWidth="324.0" />
-      <Label fx:id="akunnow" layoutX="268.0" layoutY="171.0" prefHeight="18.0" prefWidth="64.0" text="setter akun" />
-      <Button fx:id="submit" layoutX="368.0" layoutY="124.0" mnemonicParsing="false" onAction="#setAkun" text="Submit" />
-      <Button fx:id="back" layoutX="193.0" layoutY="124.0" mnemonicParsing="false" onAction="#Back" text="Back" />
+      <Text layoutX="83.0" layoutY="61.0" strokeType="OUTSIDE" strokeWidth="0.0" text="masukkan id akun" wrappingWidth="109.7496337890625" />
+      <TextField fx:id="setAkun" layoutX="221.0" layoutY="35.0" prefHeight="26.0" prefWidth="222.0" />
+      <Label fx:id="akunnow" layoutX="498.0" layoutY="39.0" prefHeight="18.0" prefWidth="64.0" text="setter akun" />
+      <Button fx:id="submit" layoutX="602.0" layoutY="35.0" mnemonicParsing="false" onAction="#setAkun" text="Submit" />
+      <Button fx:id="back" layoutX="83.0" layoutY="92.0" mnemonicParsing="false" onAction="#Back" text="Back" />
+      <Text layoutX="354.0" layoutY="109.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Pendaftaran akun" />
+      <TableView fx:id="table_viewakun" layoutX="57.0" layoutY="313.0" onMouseClicked="#getSelected" prefHeight="230.0" prefWidth="686.0">
+        <columns>
+          <TableColumn fx:id="kol_idakun" prefWidth="88.0" text="id akun" />
+          <TableColumn fx:id="kol_nama" prefWidth="202.39996337890625" text="nama" />
+            <TableColumn fx:id="kol_nohp" prefWidth="135.199951171875" text="no_telp" />
+            <TableColumn fx:id="kol_alamat" prefWidth="264.79998779296875" text="alamat" />
+        </columns>
+      </TableView>
+      <Text layoutX="83.0" layoutY="159.0" strokeType="OUTSIDE" strokeWidth="0.0" text="nama" wrappingWidth="53.600000000000136">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Text>
+      <Text layoutX="80.0" layoutY="195.0" strokeType="OUTSIDE" strokeWidth="0.0" text="no_telp">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Text>
+      <Text layoutX="80.0" layoutY="234.0" strokeType="OUTSIDE" strokeWidth="0.0" text="alamat">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Text>
+      <TextField fx:id="field_nama" layoutX="193.0" layoutY="141.0" prefHeight="26.0" prefWidth="375.0" />
+      <TextField fx:id="field_nohp" layoutX="193.0" layoutY="177.0" prefHeight="26.0" prefWidth="375.0" />
+      <TextField fx:id="field_alamat" layoutX="193.0" layoutY="216.0" prefHeight="26.0" prefWidth="375.0" />
+      <Button layoutX="354.0" layoutY="265.0" mnemonicParsing="false" onAction="#insertButton" prefHeight="26.0" prefWidth="78.0" text="Insert" />
+      <Button layoutX="577.0" layoutY="265.0" mnemonicParsing="false" onAction="#updateButton" prefHeight="26.0" prefWidth="64.0" text="Update" />
+      <Button layoutX="167.0" layoutY="266.0" mnemonicParsing="false" onAction="#deleteButton" text="Delete" />
    </children>
 </AnchorPane>

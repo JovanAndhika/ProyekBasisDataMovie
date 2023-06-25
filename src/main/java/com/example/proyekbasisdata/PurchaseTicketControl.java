@@ -60,6 +60,7 @@ public class PurchaseTicketControl {
 
     int subtotal = 0;
 
+
     @FXML
     public void initialize() {
         try {

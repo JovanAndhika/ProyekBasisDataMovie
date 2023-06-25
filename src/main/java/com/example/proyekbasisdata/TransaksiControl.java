@@ -3,10 +3,8 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
-import javafx.scene.control.Tab;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
@@ -22,7 +20,7 @@ public class TransaksiControl {
     @FXML
     TableColumn<TransaksiProperty, String> tblNamaKasir;
     @FXML
-    TableColumn<TransaksiProperty, Timestamp> tblTglTransaksi;
+    TableColumn<TransaksiProperty, String> tblTglTransaksi;
 
     @FXML
     ObservableList<TransaksiProperty> listTransaksi = FXCollections.observableArrayList();
@@ -40,10 +38,11 @@ public class TransaksiControl {
                     String idTransaksi = rs.getString(1);
                     String idAkun = rs.getString(2);
                     String namaKasir = rs.getString(3);
-                    String tglTransaksi = rs.getString(String.valueOf(4));
+                    String tglTransaksi = rs.getString(4);
                     listTransaksi.add(new TransaksiProperty(idTransaksi, idAkun, namaKasir, tglTransaksi));
                 }
             }
+            con.close();
         } catch (ClassNotFoundException e) {
             System.out.println(e);
         } catch (SQLException e) {
@@ -53,7 +52,7 @@ public class TransaksiControl {
         tblIdTransaksi.setCellValueFactory(new PropertyValueFactory<TransaksiProperty, String>("idTransaksi"));
         tblIdAkun.setCellValueFactory(new PropertyValueFactory<TransaksiProperty, String>("idAkun"));
         tblNamaKasir.setCellValueFactory(new PropertyValueFactory<TransaksiProperty, String>("namaKasir"));
-        tblTglTransaksi.setCellValueFactory(new PropertyValueFactory<TransaksiProperty, Timestamp>("tglTransaksi"));
+        tblTglTransaksi.setCellValueFactory(new PropertyValueFactory<TransaksiProperty, String>("tglTransaksi"));
     }
 
     @FXML
@@ -62,6 +61,12 @@ public class TransaksiControl {
         Stage primaryStage = app.getPrimaryStage();
         Scene scene_awal = app.getSceneAwal();
         primaryStage.setScene(scene_awal);
+    }
+
+    @FXML
+    protected void refreshButton(){
+        tblTransaksi.getItems().clear();
+        initialize();
     }
 
 }

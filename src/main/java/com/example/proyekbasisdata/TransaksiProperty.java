@@ -8,6 +8,9 @@ public class TransaksiProperty {
     String namaKasir;
     String tglTransaksi;
 
+    public TransaksiProperty() {
+    }
+
     public TransaksiProperty(String idTransaksi, String idAkun, String namaKasir, String tglTransaksi) {
         this.idTransaksi = idTransaksi;
         this.idAkun = idAkun;
