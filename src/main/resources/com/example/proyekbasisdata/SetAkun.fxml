@@ -43,8 +43,8 @@
       <TextField fx:id="field_nama" layoutX="193.0" layoutY="141.0" prefHeight="26.0" prefWidth="375.0" />
       <TextField fx:id="field_nohp" layoutX="193.0" layoutY="177.0" prefHeight="26.0" prefWidth="375.0" />
       <TextField fx:id="field_alamat" layoutX="193.0" layoutY="216.0" prefHeight="26.0" prefWidth="375.0" />
-      <Button layoutX="354.0" layoutY="265.0" mnemonicParsing="false" onAction="#insertButton" prefHeight="26.0" prefWidth="78.0" text="Insert" />
-      <Button layoutX="577.0" layoutY="265.0" mnemonicParsing="false" onAction="#updateButton" prefHeight="26.0" prefWidth="64.0" text="Update" />
-      <Button layoutX="167.0" layoutY="266.0" mnemonicParsing="false" onAction="#deleteButton" text="Delete" />
+      <Button fx:id="insertButton" layoutX="354.0" layoutY="265.0" mnemonicParsing="false" onAction="#insertButton" prefHeight="26.0" prefWidth="78.0" text="Insert" />
+      <Button fx:id="updateButton" layoutX="577.0" layoutY="265.0" mnemonicParsing="false" onAction="#updateButton" prefHeight="26.0" prefWidth="64.0" text="Update" />
+      <Button fx:id="deleteButton" layoutX="167.0" layoutY="266.0" mnemonicParsing="false" onAction="#deleteButton" text="Delete" />
    </children>
 </AnchorPane>

@@ -29,7 +29,11 @@ public class SetAkunControl {
     @FXML
     protected Button back;
     @FXML
-    protected Button insert;
+    protected Button insertButton;
+    @FXML
+    protected Button deleteButton;
+    @FXML
+    protected Button updateButton;
 
 
     //TEXTFIELD
@@ -103,7 +107,7 @@ public class SetAkunControl {
             preparedStatement.executeUpdate();
             con.close();
 
-            Window owner = insert.getScene().getWindow();
+            Window owner = insertButton.getScene().getWindow();
             showAlert(Alert.AlertType.CONFIRMATION, owner, "Registration Successful",
                     "data berhasil disave");
 
