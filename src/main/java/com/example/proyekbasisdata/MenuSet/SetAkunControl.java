@@ -178,9 +178,9 @@ public class SetAkunControl {
     private void getSelected() {
         int index = table_viewakun.getSelectionModel().getSelectedIndex();
         setAkun.setText(String.valueOf(kol_idakun.getCellData(index)));
-        field_nama.setText(kol_nama.getText());
-        field_nohp.setText(kol_nohp.getText());
-        field_alamat.setText(kol_alamat.getText());
+        field_nama.setText(kol_nama.getCellData(index));
+        field_nohp.setText(kol_nohp.getCellData(index));
+        field_alamat.setText(kol_alamat.getCellData(index));
     }
 
 
